@@ -12,7 +12,15 @@ public class Coin {
     private Long id;
 
     private String name;
-    private int cost;
+    private Double cost;
+
+    public Coin() {
+    }
+
+    public Coin(String name, Double cost) {
+        this.name = name;
+        this.cost = cost;
+    }
 
     public Long getId() {
         return id;
@@ -30,11 +38,11 @@ public class Coin {
         this.name = name;
     }
 
-    public int getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 }

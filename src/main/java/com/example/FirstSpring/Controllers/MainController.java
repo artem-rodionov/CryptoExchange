@@ -1,18 +1,13 @@
 package com.example.FirstSpring.Controllers;
 
-import com.example.FirstSpring.models.Coin;
-import com.example.FirstSpring.models.User;
-import com.example.FirstSpring.models.UserCoin;
-import com.example.FirstSpring.repository.CoinRepository;
-import com.example.FirstSpring.repository.UserCoinRepository;
-import com.example.FirstSpring.repository.UserRepository;
+import com.example.FirstSpring.models.*;
+import com.example.FirstSpring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +22,12 @@ public class MainController {
     private UserRepository UserRepository;
     @Autowired
     private UserCoinRepository UserCoinRepository;
+
+    @Autowired
+    private UserBrokerCoinRepository userBrokerCoinRepository;
+
+    @Autowired
+    private TemporaryUserBrokerRepository temporaryUserBrokerRepository;
 
     @GetMapping("/")
     public String first( Model model) {
@@ -144,5 +145,59 @@ public class MainController {
             UserCoinRepository.save(usercoin);
             return "redirect:/main";
         }
+    }
+
+    @GetMapping("/brokerInfo")
+    public String broker( @AuthenticationPrincipal User user,
+                          @RequestParam Long coinId,
+                          Model model) {
+        Optional<Coin> coin = coinRepository.findById(coinId);
+        UserBrokerCoin uBC = userBrokerCoinRepository.findByUserAndCoin(user,coin.get());
+        TemporaryUserBroker tUB = temporaryUserBrokerRepository.findByUserAndCoin(user, coin.get());
+        model.addAttribute("user",user);
+        model.addAttribute("coin",coin.get());
+        if(uBC != null) {
+         return "hasBroker";
+        }
+        if(tUB != null) {
+            return "hasRequest";
+        }
+        else {
+            return "brokerInfo";
+        }
+    }
+
+    @PostMapping("/brokerInfo")
+    public String brokerRequest( @AuthenticationPrincipal User user,
+                                 @RequestParam Long coinId,
+                                 Model model) {
+        Optional<Coin> coin = coinRepository.findById(coinId);
+        TemporaryUserBroker temporaryUserBroker = new TemporaryUserBroker(user,coin.get());
+        temporaryUserBrokerRepository.save(temporaryUserBroker);
+            return "redirect:/main";
+    }
+
+    @PostMapping("/hasBroker")
+    public String hasBroker( @AuthenticationPrincipal User user,
+                                 @RequestParam Long coinId,
+                                 Model model) {
+        Optional<Coin> coin = coinRepository.findById(coinId);
+        UserBrokerCoin uBC = userBrokerCoinRepository.findByUserAndCoin(user,coin.get());
+        if(uBC != null) {
+            userBrokerCoinRepository.delete(uBC);
+        }
+        return "redirect:/main";
+    }
+
+    @PostMapping("/hasRequest")
+    public String hasRequest( @AuthenticationPrincipal User user,
+                             @RequestParam Long coinId,
+                             Model model) {
+        Optional<Coin> coin = coinRepository.findById(coinId);
+        TemporaryUserBroker temporaryUserBroker = temporaryUserBrokerRepository.findByUserAndCoin(user,coin.get());
+        if(temporaryUserBroker != null) {
+            temporaryUserBrokerRepository.delete(temporaryUserBroker);
+        }
+        return "redirect:/main";
     }
 }

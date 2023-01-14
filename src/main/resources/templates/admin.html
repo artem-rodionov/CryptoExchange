@@ -6,11 +6,11 @@
     <link rel = "stylesheet" th:href="@{/css/styles.css}">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 <header th:insert = "\blocks\header :: header"></header>
-<div class="container mt-5">
-    <table class="alert alert-info mt-2">
-        <thead>
+<header th:insert = "\blocks\admin_header :: header_ad"></header>
+    <table class="table table-hover table-bordered border-primary alert alert-info mt-2">
+        <thead align="center">
         <th>ID</th>
         <th>UserName</th>
         <th>Password</th>
@@ -27,6 +27,20 @@
                 <td>
                     <form action="/admin" method="post">
                         <input type="hidden" name="userId" th:value="${el.id}"/>
+                        <input type="hidden" name="action" th:value="set_role"/>
+                        <button type="submit" class="btn btn-danger">Добавить роль брокера</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/admin" method="post">
+                        <input type="hidden" name="userId" th:value="${el.id}"/>
+                        <input type="hidden" name="action" th:value="delete_role"/>
+                        <button type="submit" class="btn btn-danger">Убрать роль брокера</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/admin" method="post">
+                        <input type="hidden" name="userId" th:value="${el.id}"/>
                         <input type="hidden" name="action" th:value="delete"/>
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
@@ -34,8 +48,6 @@
             </tr>
         </div>
     </table>
-    <a href="/">Главная</a>
-</div>
-<div th:insert = "\blocks\footer :: footer"></div>
+<footer th:insert = "\blocks\footer :: footer" class="mt-auto py-4 py-md-5 bg-light"></footer>
 </body>
 </html>

@@ -5,14 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel = "stylesheet" th:href="@{/css/styles.css}">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <header th:insert = "\blocks\header :: header"></header>
 
 <div id="link"></div>
 
 <script type="text/javascript">
 var obj = document.getElementById('link');
-var timerFIG = 60; // Время в секундах, через которое появляется кнопка
+var timerFIG = 10; // Время в секундах, через которое появляется кнопка
 var timer = setInterval("startTimer()",1000);
 function startTimer() {
 if(timerFIG !== 1) {
@@ -31,8 +31,12 @@ obj.innerHTML = '<form action="/mainCash"><button type="submit" class="btn btn-w
                 <a th:href="'/main/sell/'+${el.id}" class="btn btn-warning">Продать</a>
             </div>
         </form>
+        <form method="get" action="/brokerInfo">
+            <input type="hidden" name="coinId" th:value="${el.coin.getId()}"/>
+            <button type="submit" class="btn btn-warning">Информация о Брокере</button>
+        </form>
     </div>
 </div>
-<div th:insert = "\blocks\footer :: footer"></div>
+<div th:insert = "\blocks\footer :: footer" class="mt-auto py-4 py-md-5 bg-light"></div>
 </body>
 </html>

@@ -1,9 +1,7 @@
 package com.example.FirstSpring.service;
 
-import com.example.FirstSpring.models.Role;
-import com.example.FirstSpring.models.User;
-import com.example.FirstSpring.repository.RoleRepository;
-import com.example.FirstSpring.repository.UserRepository;
+import com.example.FirstSpring.models.*;
+import com.example.FirstSpring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,6 +23,15 @@ public class UserService implements UserDetailsService {
     UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    UserCoinRepository userCoinRepository;
+
+    @Autowired
+    UserBrokerCoinRepository userBrokerCoinRepository;
+
+    @Autowired
+    TemporaryUserBrokerRepository temporaryUserBrokerRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -63,6 +70,23 @@ public class UserService implements UserDetailsService {
 
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
+            User user = userRepository.findById(userId).orElse(new User());
+            List<UserCoin> userCoins = userCoinRepository.findByUser(user);
+            List<UserBrokerCoin> userBrokerCoins = userBrokerCoinRepository.findByUser(user);
+            List<TemporaryUserBroker> temporaryUserBrokers = temporaryUserBrokerRepository.findByUser(user);
+            List<UserBrokerCoin> userBrokerCoins1 = userBrokerCoinRepository.findByBroker(user);
+            for(UserCoin coin : userCoins) {
+                userCoinRepository.delete(coin);
+            }
+            for(UserBrokerCoin coin : userBrokerCoins) {
+                userBrokerCoinRepository.delete(coin);
+            }
+            for(TemporaryUserBroker coin : temporaryUserBrokers) {
+                temporaryUserBrokerRepository.delete(coin);
+            }
+            for(UserBrokerCoin coin : userBrokerCoins1) {
+                userBrokerCoinRepository.delete(coin);
+            }
             userRepository.deleteById(userId);
             return true;
         }
