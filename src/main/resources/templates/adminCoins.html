@@ -10,13 +10,13 @@
 <header th:insert = "\blocks\header :: header"></header>
 <header th:insert = "\blocks\admin_header :: header_ad"></header>
 <div class="mt-2" align="center">
-<a href="/admin/castCoin" class="btn btn-success">Add</a>
+<a href="/admin/castCoin" class="btn btn-success">Добавить монету</a>
 </div>
 <table class="table table-hover table-bordered border-primary alert alert-info mt-2">
   <thead align="center">
   <th>ID</th>
-  <th>Coin Name</th>
-  <th>Coin Cost</th>
+  <th>Название монеты</th>
+  <th>Цена монеты</th>
   </thead>
   <div th:each ="el : ${allCoins}" >
     <tr>
@@ -26,7 +26,7 @@
       <td>
         <form action="/admin/deleteCoin" method="post">
           <input type="hidden" name="coinId" th:value="${el.id}"/>
-          <button type="submit" class="btn btn-danger">Delete</button>
+          <button type="submit" class="btn btn-danger">Удалить</button>
         </form>
       </td>
     </tr>

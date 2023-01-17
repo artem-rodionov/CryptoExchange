@@ -11,10 +11,10 @@
           </li>
 
           <li sec:authorize="hasRole('ADMIN')">
-            <a href="/" class="nav-link px-2 fs-3 text-danger" th:href="@{/admin}">Admin Panel</a>
+            <a href="/" class="nav-link px-2 fs-3 text-danger" th:href="@{/admin}">Панель Администратора</a>
           </li>
           <li sec:authorize="hasRole('BROKER')">
-            <a href="/" class="nav-link px-2 fs-3 text-success" th:href="@{/broker}">Broker Panel</a>
+            <a href="/" class="nav-link px-2 fs-3 text-success" th:href="@{/broker}">Панель Брокера</a>
           </li>
 
         </ul>
@@ -23,7 +23,7 @@
         <div class="text-end">
             <p class="nav-link px-2 text-white">Баланс :<span th:text="${user.cash}"></span></p>
           <form th:action="@{/logout}" method="post">
-            <button class="btn btn btn-warning" type="submit" value="Sign Out">Sign out</button>
+            <button class="btn btn btn-warning" type="submit" value="Sign Out">Выход</button>
           </form>
         </div>
       </div>
