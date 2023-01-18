@@ -6,21 +6,36 @@
   <link th:href="@{/css/styles.css}" rel = "stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100">
-<header class="p-3 text-bg-dark">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<header class="text-bg-dark p-2">
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 fs-3 text-warning">Bonch биржа</a></li>
-      </ul>
-
-      <div class="text-end">
-        <a th:href = "@{/main}" >
-          <button type="button" class="btn btn-warning">Вход</button>
-        </a>
-      </div>
+  <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-danger text-decoration-none">
+      <img th:src="@{/images/clown.png}" alt="" width="60" height="60" class="rounded circle">
+      <span class="fs-3">ClownБиржа</span>
+    </a>
+    <ul class="nav col-12 col-md-auto mb-2 me-lg-auto justify-content-center mb-md-0">
+    </ul>
+    <div class="col-md-3 text-end">
+      <form th:action="@{/main}" >
+        <button class="btn btn btn-outline-warning me-2" type="submit" value="Sign Out">Вход</button>
+      </form>
     </div>
   </div>
 </header>
+<div class="img-wrap">
+  <img th:src="@{/images/e4.jpg}"class="img-fluid">
+  <h1 class="featurette-heading fw-normal lh-1 text-white">Купи - продай</h1>
+</div>
+<footer class="mt-auto py-4 py-md-5 bg-dark">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Вернуться в начало страницы</a>
+    </p>
+
+    <p class="mb-1 text-white">© 2023 ClownБиржа</p>
+    <p class="mb-0"> <a href="/main">Посетить главную страницу</a></p>
+
+  </div>
+</footer>
 </body>
 </html>
