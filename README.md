@@ -1,4 +1,4 @@
-# Создание сайта на Java на тему: Автомобильные перевозки, отдел продаж
+# Создание сайта на Java на тему: Инвестиционные компании. Управление инвестиционными портфелями.
 
 ## Оглавление
 
@@ -8,18 +8,7 @@
    3. [Models](#Models)
    4. [Views](#Views)
    5. [Controllers](#Controllers)
-2. [Страницы сайта](#Страницы-сайта)
-   1. [Блоки Header и Footer](#Блоки-Header-и-Footer)
-   2. [Home](#Home)
-   3. [Catalog](#Catalog)
-   4. [Car Park](#Car-Park)
-   5. [About](#About)
-   6. [Order](#Order)
-   7. [Orders](#Orders)
-   8. [Sign up](#Sign-up)
-   9. [Sign in](#Sign-in)
-   10. [Manager Registration](#Manager_registration)
-3. [Как собрать проект](#Как-собрать-проект)
+2. [Как собрать проект](#Как-собрать-проект)
 
 
 ## Структура проекта
@@ -73,91 +62,6 @@ Spring, БД MySQL, а также с помощью HTML и CSS.
 данные.
 [Ссылка](https://github.com/Arondondon/spring_project/tree/master/src/main/java/com/work/spring_project/controllers)
 на директорию controllers.
-## Страницы сайта
-
-### Блоки Header и Footer
-На каждой странице (кроме страницы авторизации) есть 
-верхний и нижний блоки. В верхнем расположены эмблема
-и названии компании, ссылки на другие страницы сайта,
-а также кнопки авторизации(если вход не был выполнен),
-выхода из аккаунта(если вход был выполнен) и 
-регистрации. В нижнем ссылки на другие страницы сайта
-и другое. Наполненность ссылками на другие страницы 
-в обоих блоках зависит от роли пользователя.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/header1.png)
-Хедер без авторизации
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/header2.png)
-Хедер с авторизацией администратора
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/footer.png)
-Футер без авторизации
-### Home
-На главной странице сервиса расположены рекламные 
-баннеры, краткое описание преимуществ компании, а 
-также кнопки для перехода на другие страницы.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/home1.png)
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/home2.png)
-### Catalog
-На странице с каталогом услуг располагается список 
-предоставляемых компанией услуг с описанием и 
-минимальной ценой,а также возможностью перейти в
-раздел заказа (если вход не выполнен, переадресация 
-на страницу авторизации). Если вход выполнен под 
-менеджером или администратором, на странице появляются
-дополнительные возможности по управлению сервисом.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/catalog1.png)
-Для пользователей и посетителей
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/catalog2.png)
-Для менеджера и админа
-### Car Park
-На странице с автомобильным парком располагается список
-предоставляемых компанией автомобилей с описанием и
-минимальной ценой,а также возможностью перейти в
-раздел заказа (если вход не выполнен, переадресация
-на страницу авторизации). Если вход выполнен под
-менеджером или администратором, на странице появляются
-дополнительные возможности по управлению сервисом.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/carpark1.png)
-Для пользователей и посетителей
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/carpark2.png)
-Для менеджера и админа
-### About
-На странице с информацией о компании расположено краткое
-описание и контактные данные.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/about.png)
-### Order
-**Переход на страницу с оформлением заказа возможен только
-для авторизованных пользователей, в противном случае 
-сайт переадресует посетителя на страницу авторизации.**
-На странице с заказом расположена форма, которую нужно
-заполнить для оформления заказа. При нажатии на кнопку
-"Continue" происходит переход на страницу подтверждения
-заказа, где заказчик может проверить свои данные, а 
-также узнать итоговую стоимость заказа. Если его всё
-устраивает, нужно нажать на кнопку подтверждения, а в
-противном случае на кнопку редактирования заказа.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/order.png)
-Страница оформления заказа
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/confirm.png)
-Страница подтверждения заказа
-### Orders
-**Эта страница доступна только менеджерам и админу.**
-На странице с заказами располагается список всех 
-оформленных заказов с полным описанием. Заказ можно 
-удалить, если он выполнен.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/orders.png)
-### Sign up
-Страница для регистрации обычных пользователей.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/signup.png)
-### Sign in
-Страница для авторизации.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/signin.png)
-### Manager Registration
-**Эта страница доступна только администратору.**
-Страница для регистрации менеджеров. Почти ничем
-не отличается от обычной страницы регистрации кроме 
-того, что зарегистрированный здесь пользователь имеет
-права менеджера.
-![Alt-text](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/static/images/readme/manreg.png)
 ## Как собрать проект
 Чтобы запустить данный проект на своём пк, нужно:
 1. В среде разработки Intellij Idea создать Spring Boot
