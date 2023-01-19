@@ -22,26 +22,18 @@ Spring, БД MySQL, а также с помощью HTML и CSS.
 из категорий: [models](#Models), [views](#Views), 
 [controllers](#Controllers). 
 ### Описание сервиса
-Сервис представляет собой сайт для заказа 
-втомобильных грузоперевозок. Пользователь может 
-ознакомиться со списком услуг и автомобилей, а затем 
-заполнить форму и сделать заказ. На сайте присутствует
+Сервис представляет собой сайт реализующий работу биржи криптовалют. Пользователь может 
+покупать криптовалюту, продавать свои активы в виде криптовалюты, а также воспользоваться услугами брокера. На сайте присутствует
 регистрация и авторизация пользователей. У 
-зарегистрированных пользователей может быть одна из 
-трёх ролей: user, manager, admin. Обычный 
-зарегистрированный пользователь, в отличие от
-незагеристрированного может заполнить
-и сделать заказ. Менеджеру по сравнению с обычным 
-пользователем доступны различные функции по управлению
-сервисом. А администратор по сравнению с менеджером
-может ещё и регистрировать новых менеджеров. 
+зарегистрированных пользователей может быть несколько из 
+трёх ролей: user, broker, admin. 
 ### Models
 Сервис работает с базой данных, в которой хранится 
-информация об услугах фирмы, автомобильном парке, 
-пользователях и заказах. Поэтому под категорию моделей
+информация об криптовалютах, кошельках пользователей, 
+пользователях и клиентах брокеров. Поэтому под категорию моделей
 попадают все классы данных, 
 хранящихся в БД, репотизориев и сервисов. 
-[Ссылка](https://github.com/Arondondon/spring_project/tree/master/src/main/java/com/work/spring_project/models) 
+[Ссылка](https://github.com/artem-rodionov/FirstSpring/tree/master/src/main/java/com/example/FirstSpring/models) 
 на директорию models. 
 ### Views
 Работу сервиса отображают страницы сайта. Поэтому под 
@@ -49,7 +41,7 @@ Spring, БД MySQL, а также с помощью HTML и CSS.
 которые могут отображать различную информацию, в 
 зависимости от различных условий (роль пользователя, 
 наполнение базы данных и т.д.).
-[Ссылка](https://github.com/Arondondon/spring_project/tree/master/src/main/resources/templates)
+[Ссылка](https://github.com/artem-rodionov/FirstSpring/tree/master/src/main/resources/templates)
 на директорию templates.
 ### Controllers
 Для того, чтобы загружать страницы сайта с нужной 
@@ -60,7 +52,7 @@ Spring, БД MySQL, а также с помощью HTML и CSS.
 которые их уже отображают нужным образом. Также 
 контроллеры формы на страницах, добавляя в БД новые
 данные.
-[Ссылка](https://github.com/Arondondon/spring_project/tree/master/src/main/java/com/work/spring_project/controllers)
+[Ссылка](https://github.com/artem-rodionov/FirstSpring/tree/master/src/main/java/com/example/FirstSpring/Controllers)
 на директорию controllers.
 ## Как собрать проект
 Чтобы запустить данный проект на своём пк, нужно:
@@ -69,7 +61,7 @@ Spring, БД MySQL, а также с помощью HTML и CSS.
 2. Подключить к проекту данный репозиторий.
 3. Сделать update проекта с репозитория.
 4. В СУБД MySQL создать базу данных.
-5. В файле [application.properties](https://github.com/Arondondon/spring_project/blob/master/src/main/resources/application.properties)
+5. В файле [application.properties](https://github.com/artem-rodionov/FirstSpring/blob/master/src/main/resources/application.properties)
 ввести нужные название базы данных, имя пользователя (стандартно "root")
 и пароль.
 ```
